@@ -30,6 +30,8 @@ class Expressions {
                 // we'd have to work out a determination here to push * and / before all + and - operations
                 array_push($operators, $element);
 
+
+
             } else {
                 // is number
 
@@ -38,6 +40,12 @@ class Expressions {
 
             }
         }
+
+
+        // an alternative as you get into the () operations is doing a deep dive into the string to find the inner most () first, then run that
+        // through a routine to calculate that as a sub-expression, replacing the () portiong with the resulting value.
+        // Once you do this with all (), then you'd just take the resuling expression, without (), through the routine once more to get the
+        // final value
 
         //print_r($numbers);
         //print_r($operators);
