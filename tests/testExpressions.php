@@ -19,4 +19,6 @@ class ExpressionsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(6,Expressions::evaluate("9+5-3+8-9+1-5"));
     }
 
+    // add additional test cases for *, /, and ()
+
 }

@@ -9,6 +9,7 @@ class Expressions {
         $runningTotal = 0;
 
         // need to refine my matching so I can deal with multiple places in each digit.
+        // add additional searches for * and / and ()
         preg_match_all("/[\d\+\-]+?/",$expression,$matches);
 
         $matches = $matches[0];
@@ -26,7 +27,9 @@ class Expressions {
                 // is operator
 
 
+                // we'd have to work out a determination here to push * and / before all + and - operations
                 array_push($operators, $element);
+
             } else {
                 // is number
 
@@ -67,6 +70,9 @@ class Expressions {
             case "-":
                 return $number1 - $number2;
                 break;
+
+
+            // add two more cases here for multiply and divide
         }
 
     }
