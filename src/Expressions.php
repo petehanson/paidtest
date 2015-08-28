@@ -8,6 +8,7 @@ class Expressions {
 
         $runningTotal = 0;
 
+        // need to refine my matching so I can deal with multiple places in each digit.
         preg_match_all("/[\d\+\-]+?/",$expression,$matches);
 
         $matches = $matches[0];
@@ -39,14 +40,15 @@ class Expressions {
         //print_r($operators);
 
         while (count($operators) > 0) {
-            $op = array_pop($operators);
+            $op = array_shift($operators);
+            $num1 = array_shift($numbers);
+            $num2 = array_shift($numbers);
 
-            $num1 = array_pop($numbers);
-            $num2 = array_pop($numbers);
+            //echo "$num2 $op $num1\n";
 
             $result = self::doMath($num1,$num2,$op);
-            echo $result . "\n";
-            array_push($numbers,$result);
+            //echo $result . "\n";
+            array_unshift($numbers,$result);
         }
 
 
@@ -63,7 +65,7 @@ class Expressions {
                 break;
 
             case "-":
-                return $number2 - $number1;
+                return $number1 - $number2;
                 break;
         }
 
